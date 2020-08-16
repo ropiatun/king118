@@ -29,23 +29,31 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
+										<th>Nomor</th>
+										<th>Nama Produk</th>
 										<th>Tanggal Produksi</th>
 										<th>Biaya Produksi</th>
-										<th>Prodak Jadi</th>
+										<th>Jumlah Produk Jadi</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($produksi as $produksi): ?>
+									<?php
+										$no=1;
+										foreach ($produksi as $produksi): ?>
 									<tr>
+										<td><?php echo $no++ ?></td>
+										<td width="150">
+											<?php echo $produksi->nama_produk ?>
+										</td>
 										<td width="150">
 											<?php echo $produksi->tanggal ?>
 										</td>
 										<td>
-											Rp. <?php echo $produksi->jumlah ?>
+											Rp. <?php echo $produksi->biaya_produksi ?>
 										</td>
 										<td>
-											<?php echo $produksi->produk_jadi ?></td>
+											<?php echo $produksi->jumlah_jadi ?> Pcs </td>
 									
 										<td>
 											<a href="<?php echo site_url('admin/produksi/edit/'.$produksi->id_produksi) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;

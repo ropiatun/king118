@@ -5,30 +5,40 @@ class Produk_model extends CI_Model
     private $_table = "produk";
 
     public $id_produk;
-    public $nama;
-    public $harga;
+    public $nama_produk;
+    public $harga_dasar;
     public $keterangan;
-    public $gambar = "default.jpg";
-    public $stok;
+    public $foto_produk = "default.jpg";
+    public $stok_produk;
+    public $harga_jual;
+    public $berat_satuan;
 
     public function rules()
     {
         return [
-            ['field' => 'nama',
-            'label' => 'Nama',
+            ['field' => 'nama_produk',
+            'label' => 'Nama_produk',
+            'rules' => 'required'],
+            
+            ['field' => 'harga_dasar',
+            'label' => 'Harga_dasar',
             'rules' => 'required'],
 
-            ['field' => 'harga',
-            'label' => 'Harga',
-            'rules' => 'numeric'],
-            
             ['field' => 'keterangan',
             'label' => 'Keterangan',
             'rules' => 'required'],
 
-            ['field' => 'stok',
-            'label' => 'Stok',
-            'rules' => 'numeric']
+            ['field' => 'stok_produk',
+            'label' => 'Stok_produk',
+            'rules' => 'required'],
+
+            ['field' => 'harga_jual',
+            'label' => 'Harga_jual',
+            'rules' => 'required'],
+
+            ['field' => 'berat_satuan',
+            'label' => 'Berat_satuan',
+            'rules' => 'required']
         ];
     }
 
@@ -45,28 +55,36 @@ class Produk_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->nama         = $post["nama"];
-        $this->harga        = $post["harga"];
+        // $this->id_produk = uniqid();
+        $this->nama_produk  = $post["nama_produk"];
+        $this->harga_dasar  = $post["harga_dasar"];
         $this->keterangan   = $post["keterangan"];
-        $this->gambar       =$this->_uploadImage();
-        $this->stok         = $post["stok"];
+        $this->foto_produk  =$this->_uploadImage();
+        $this->stok_produk  = $post["stok_produk"];
+        $this->harga_jual   = $post["harga_jual"];
+        $this->berat_satuan = $post["berat_satuan"];
+
         return $this->db->insert($this->_table, $this);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        $this->id_produk    =$post["id"];
-        $this->nama         = $post["nama"];
-        $this->harga        = $post["harga"];
+        $this->id_produk    = $post["id"];
+        $this->nama_produk  = $post["nama_produk"];
+        $this->harga_dasar  = $post["harga_dasar"];
         $this->keterangan   = $post["keterangan"];
 
-        if (!empty($_FILES["gambar"]["name"])){
-            $this->gambar = $this->_uploadImage();
+        if (!empty($_FILES["foto_produk"]["name"])){
+            $this->foto_produk = $this->_uploadImage();
         }else {
-            $this->gambar = $post["old_image"];
+            $this->foto_produk = $post["old_image"];
         }
-        $this->stok         = $post["stok"];
+
+        $this->stok_produk   = $post["stok_produk"];
+        $this->harga_jual    = $post["harga_jual"];
+        $this->berat_satuan  = $post["berat_satuan"];
+
         return $this->db->update($this->_table, $this, array('id_produk' => $post['id']));
     }
 
@@ -80,11 +98,11 @@ class Produk_model extends CI_Model
         return $this->db->delete($this->_table, array("id_produk" => $id));
     }
 
-    private function _uploadImage()
+   private function _uploadImage()
 {
     $config['upload_path']          = './upload/produk/';
     $config['allowed_types']        = 'gif|jpg|png';
-    $config['file_name']            = $this->id_produk;
+    // $config['file_name']            = $this->id_produk;
     $config['overwrite']            = true;
     $config['max_size']             = 1024; // 1MB
     // $config['max_width']            = 1024;
@@ -92,7 +110,7 @@ class Produk_model extends CI_Model
 
     $this->load->library('upload', $config);
 
-    if ($this->upload->do_upload('gambar')) {
+    if ($this->upload->do_upload('foto_produk')) {
         return $this->upload->data("file_name");
     }
     
@@ -101,11 +119,20 @@ class Produk_model extends CI_Model
 
 private function _deleteImage($id)
 {
-    $product = $this->getById($id);
-    if ($produk->gambar != "default.jpg") {
-        $filename = explode(".", $produk->gambar)[0];
+    $produk = $this->getById($id);
+    if ($produk->foto_produk != "default.jpg") {
+        $filename = explode(".", $produk->foto_produk)[0];
         return array_map('unlink', glob(FCPATH."upload/produk/$filename.*"));
     }
+}
+
+public function hitung_produk()
+{
+ $this->db->select('*');
+ $this->db->from('produk');
+ $query = $this->db->get();
+ return $query->num_rows();
+
 }
 }
 

@@ -19,7 +19,7 @@ class Toko extends CI_Controller
 
     public function tambah()
     {
-        $toko = $this->toko_model;
+        $toko       = $this->toko_model;
         $validation = $this->form_validation;
         $validation->set_rules($toko->rules());
 
@@ -35,7 +35,7 @@ class Toko extends CI_Controller
     {
         if (!isset($id)) redirect('admin/toko');
        
-        $toko = $this->toko_model;
+        $toko       = $this->toko_model;
         $validation = $this->form_validation;
         $validation->set_rules($toko->rules());
 
@@ -51,27 +51,19 @@ class Toko extends CI_Controller
     }
 
     function detail($id){
-        $toko = array('id_toko'=>$id);
-        return $this->db->get_where('toko',$produk);
+         $data = [
+            'kingsamadenganraja' => $this->db->get_where('toko',['id_toko'=>$id])->row_array(),
+        ];
+        $this->load->view("admin/toko/detail", $data);
     }
 
-    public function delete($id=null)
+     public function delete($id=null)
     {
-        if (!isset($id)) redirect('admin/toko');
-       
-        $toko = $this->toko_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($toko->rules());
-
-        if ($validation->run()) {
-            $toko->update();
-            $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-        }
-
-        $data["toko"] = $toko->getById($id);
-        if (!$data["toko"]) show_404();
+        if (!isset($id)) show_404();
         
-        $this->load->view("admin/toko/delete", $data);
+        if ($this->toko_model->delete($id)) {
+            redirect(site_url('admin/toko'));
+        }
     }
 
     public function print_data()

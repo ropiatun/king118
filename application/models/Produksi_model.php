@@ -5,23 +5,28 @@ class Produksi_model extends CI_Model
     private $_table = "produksi";
 
     public $id_produksi;
+    public $id_produk;
     public $tanggal;
-    public $jumlah;
-    public $produk_jadi;
+    public $biaya_produksi;
+    public $jumlah_jadi;
 
     public function rules()
     {
         return [
+             ['field' => 'id_produk',
+            'label' => 'Id_produk',
+            'rules' => 'required'],
+
             ['field' => 'tanggal',
             'label' => 'Tanggal',
             'rules' => 'required'],
 
-            ['field' => 'jumlah',
-            'label' => 'Jumlah',
+            ['field' => 'biaya_produksi',
+            'label' => 'Biaya_produksi',
             'rules' => 'numeric'],
             
-            ['field' => 'produk_jadi',
-            'label' => 'Produk Jadi',
+            ['field' => 'jumlah_jadi',
+            'label' => 'Junlah_jadi',
             'rules' => 'numeric']
         ];
     }
@@ -29,6 +34,14 @@ class Produksi_model extends CI_Model
     public function getAll()
     {
         return $this->db->get($this->_table)->result();
+    }
+    public function getJoin()
+    {
+        $this->db->select('*');
+         $this->db->from('produksi');
+         $this->db->join('produk','produksi.id_produk=produk.id_produk');
+         $query = $this->db->get();
+         return $query->result();
     }
     
     public function getById($id)
@@ -39,19 +52,23 @@ class Produksi_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->tanggal      = $post["tanggal"];
-        $this->jumlah       = $post["jumlah"];
-        $this->produk_jadi  = $post["produk_jadi"];
+        $this->id_produk        = $post["id_produk"];
+        $this->tanggal          = $post["tanggal"];
+        $this->biaya_produksi   = $post["biaya_produksi"];
+        $this->jumlah_jadi      = $post["jumlah_jadi"];
+
         return $this->db->insert($this->_table, $this);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        $this->id_produksi  =$post["id"];
-        $this->tanggal      = $post["tanggal"];
-        $this->jumlah       = $post["jumlah"];
-        $this->produk_jadi  = $post["produk_jadi"];
+        $this->id_produksi      =$post["id"];
+        $this->id_produk        =$post["id_produk"];
+        $this->tanggal          = $post["tanggal"];
+        $this->biaya_produksi   = $post["biaya_produksi"];
+        $this->jumlah_jadi      = $post["jumlah_jadi"];
+        
         return $this->db->update($this->_table, $this, array('id_produksi' => $post['id']));
     }
 

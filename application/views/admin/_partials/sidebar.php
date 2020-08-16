@@ -51,6 +51,7 @@
             <h6 class="collapse-header">Produksi:</h6>
             <a class="collapse-item" href="<?php echo site_url('admin/Produksi') ?>">Data Produksi</a>
             <a class="collapse-item" href="<?php echo site_url('admin/Prediksi') ?>">Prediksi Produksi</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Penjualan') ?>">Penjualan Semua Produk</a>
           </div>
         </div>
       </li>
@@ -63,9 +64,9 @@
         <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Keuangan:</h6>
-            <a class="collapse-item" href="#">Pemasukan</a>
-            <a class="collapse-item" href="#">Pengeluaran</a>
-            <a class="collapse-item" href="#">Penghasilan</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Pemasukan') ?>">Pemasukan</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Pengeluaran') ?>">Pengeluaran</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Pemasukan2') ?>">Produk Item</a>
           </div>
         </div>
       </li>
@@ -79,7 +80,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sales:</h6>
             <a class="collapse-item" href="<?php echo site_url('admin/Sales') ?>">Data Sales</a>
-            <a class="collapse-item" href="<?php echo site_url('admin/Riwayat_s') ?>">Riyawat Sales</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Suplai') ?>">Riyawat Sales</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/Target') ?>">Target Sales</a>
           </div>
         </div>
       </li>
@@ -117,11 +119,11 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Laporan Penjualan:</h6>
-            <a class="collapse-item" href="#">Penjualan</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/penjualan/print') ?>">Penjualan</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Laporan Keuangan:</h6>
-            <a class="collapse-item" href="#">Pemasukan</a>
-            <a class="collapse-item" href="#">Pengeluaran</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/pemasukan/print') ?>">Pemasukan</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/pengeluaran/print') ?>">Pengeluaran</a>
           </div>
         </div>
       </li>

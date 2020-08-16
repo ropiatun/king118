@@ -18,9 +18,9 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<?php if ($this->session->flashdata('sukses')): ?>
 				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+					<?php echo $this->session->flashdata('sukses'); ?>
 				</div>
 				<?php endif; ?>
 
@@ -41,18 +41,18 @@
 
 								<div class="form-group">
 								<label for="nama">Nama Produk</label>
-								<input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-								 type="text" name="nama" placeholder="Masukkan Nama Produk" value="<?php echo $produk->nama ?>" />
+								<input class="form-control <?php echo form_error('nama_produk') ? 'is-invalid':'' ?>"
+								 type="text" name="nama_produk" placeholder="Masukkan Nama Produk" value="<?php echo $produk->nama_produk ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('nama') ?>
+									<?php echo form_error('nama_produk') ?>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="price">Harga</label>
-								<input class="form-control <?php echo form_error('harga') ? 'is-invalid':'' ?>"
-								 type="number" name="harga" min="0" placeholder="Masukan Harga Produk" value="<?php echo $produk->harga ?>" />
+								<label for="price">Harga Dasar</label>
+								<input class="form-control <?php echo form_error('harga_dasar') ? 'is-invalid':'' ?>"
+								 type="number" name="harga_dasar" min="0" placeholder="Masukan Harga Dasar Produk" value="<?php echo $produk->harga_dasar ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('harga') ?>
+									<?php echo form_error('harga_dasar') ?>
 								</div>
 							</div>
 
@@ -66,21 +66,39 @@
 							</div>
 
 							<div class="form-group">
-								<label for="nama">Stok</label>
-								<input class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>"
-								 type="text" name="stok" placeholder="Masukkan Stok Produk" value="<?php echo $produk->stok ?>" />
+								<label for="name">Foto Produk</label>
+								<input class="form-control-file <?php echo form_error('foto_produk') ? 'is-invalid':'' ?>"
+								 type="file" name="foto_produk" />
+								<input type="hidden" name="old_image" value="<?php echo $produk->foto_produk ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('stok') ?>
+									<?php echo form_error('foto_produk') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="name">Gambar</label>
-								<input class="form-control-file <?php echo form_error('gambar') ? 'is-invalid':'' ?>"
-								 type="file" name="gambar" />
-								<input type="hidden" name="old_image" value="<?php echo $produk->gambar ?>" />
+								<label for="price">Stok Produk</label>
+								<input class="form-control <?php echo form_error('stok_produk') ? 'is-invalid':'' ?>"
+								 type="number" name="stok_produk" min="0" placeholder="Masukan Stok Produk" value="<?php echo $produk->stok_produk ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('gambar') ?>
+									<?php echo form_error('stok_produk') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="price">Harga Jual</label>
+								<input class="form-control <?php echo form_error('harga_dasar') ? 'is-invalid':'' ?>"
+								 type="number" name="harga_jual" min="0" placeholder="Masukan Harga Jual Produk" value="<?php echo $produk->harga_jual ?>" />
+								<div class="invalid-feedback">
+									<?php echo form_error('harga_jual') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="price">Berat/Satuan</label>
+								<input class="form-control <?php echo form_error('harga_dasar') ? 'is-invalid':'' ?>"
+								 type="text" name="berat_satuan" placeholder="Masukan Berat/Satuan Produk" value="<?php echo $produk->berat_satuan ?>" />
+								<div class="invalid-feedback">
+									<?php echo form_error('berat_satuan') ?>
 								</div>
 							</div>
 

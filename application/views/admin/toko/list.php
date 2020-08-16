@@ -22,11 +22,11 @@
 				
  		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <!-- <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
-                </button>
+                </button> -->
               </div>
             </div>
           </form><br>
@@ -34,7 +34,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						
+						<a href="<?php echo site_url('admin/toko/tambah') ?>"><i class="fas fa-plus"></i> Tambah Produk</a>
 					</div>
 					<div class="card-body">
 
@@ -42,17 +42,22 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
+										<th>Nomor</th>
 										<th>Nama Toko</th>
 										<th>Nama Pemilik</th>
 										<th>Alamat</th>
-										<th>Nomor Hp</th>
-										<th>Gambar</th>
+										<th>Nomer Hp</th>
+										<th>Foto Produk</th>
+										<th>Status Toko</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($toko as $toko): ?>
+									<?php
+										$no=1;
+										foreach ($toko as $toko): ?>
 									<tr>
+										<td><?php echo $no++ ?></td>
 										<td width="150">
 											<?php echo $toko->nama_toko ?>
 										</td>
@@ -61,21 +66,24 @@
 										</td>
 										<td class="small">
 											<?php echo substr($toko->alamat, 0, 120) ?></td>
+										</td>
 										<td>
-											<?php echo $toko->no_hp ?>
+											<?php echo  $toko->no_hp ?>
 										</td>
 										
 										<td>
-											<img src="<?php echo base_url('upload/toko/'.$toko->gambar) ?>" width="64" />
+											<img src="<?php echo base_url('upload/toko/'.$toko->foto_toko) ?>" width="64" />
+										</td>
+										<td>
+											<?php echo  $toko->status_toko ?>
 										</td>
 										<td>
 											<a href="<?php echo site_url('admin/toko/detail/'.$toko->id_toko) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
 										
-											<a href="<?php echo site_url('admin/toko/edit/'.$toko->id_toko) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;
-										
 											<a onclick="deleteConfirm('<?php echo site_url('admin/toko/delete/'.$toko->id_toko) ?>')"><i class="fa fa-trash" style="color: red;"></i></a>
 										</td>
 									</tr>
+									
 									<?php endforeach; ?>
 
 								</tbody>

@@ -22,11 +22,11 @@
 				
  		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+               <!--  <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
-                </button>
+                </button> -->
               </div>
             </div>
           </form><br>
@@ -42,32 +42,45 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>Nama</th>
-										<th>Harga</th>
+										<th>Nomor</th>
+										<th>Nama Produk</th>
+										<th>Harga Dasar</th>
+										<th>Harga Jual</th>
+										<th>Berat/Satuan</th>
 										<th>Keterangan</th>
-										<th>Stok</th>
-										<th>Gambar</th>
+										<th>Stok Produk</th>
+										<th>Foto Produk</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($produk as $produk): ?>
+									<?php
+										$no=1;
+										foreach ($produk as $produk): ?>
 									<tr>
+										<td><?php echo $no++ ?></td>
 										<td width="150">
-											<?php echo $produk->nama ?>
+											<?php echo $produk->nama_produk ?>
 										</td>
 										<td>
 											Rp.
-											<?php echo  $produk->harga ?>
+											<?php echo  $produk->harga_dasar ?>
+										</td>
+										<td>
+											Rp.
+											<?php echo  $produk->harga_jual ?>
+										</td>
+										<td>
+											<?php echo  $produk->berat_satuan ?>
 										</td>
 										<td class="small">
 											<?php echo substr($produk->keterangan, 0, 120) ?>...</td>
 										<td>
-											<?php echo $produk->stok ?>
+											<?php echo $produk->stok_produk ?>
 										</td>
 										
 										<td>
-											<img src="<?php echo base_url('upload/produk/'.$produk->gambar) ?>" width="64" />
+											<img src="<?php echo base_url('upload/produk/'.$produk->foto_produk) ?>" width="64" />
 										</td>
 										<td>
 											<a href="<?php echo site_url('admin/produk/detail/'.$produk->id_produk) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;

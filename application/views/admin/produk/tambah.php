@@ -18,9 +18,9 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<?php if ($this->session->flashdata('sukses')): ?>
 				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+					<?php echo $this->session->flashdata('sukses'); ?>
 				</div>
 				<?php endif; ?>
 
@@ -33,21 +33,23 @@
 						<form action="<?php echo site_url('admin/produk/tambah') ?>" method="post" enctype="multipart/form-data" >
 							<div class="form-group">
 								<label for="nama">Nama Produk</label>
-								<input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-								 type="text" name="nama" placeholder="Masukan Nama Produk" />
+								<input class="form-control <?php echo form_error('nama_produk') ? 'is-invalid':'' ?>"
+								 type="text" name="nama_produk" placeholder="Masukan Nama Produk" />
 								<div class="invalid-feedback">
-									<?php echo form_error('nama') ?>
+									<?php echo form_error('nama_produk') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="harga">Harga</label>
-								<input class="form-control <?php echo form_error('harga') ? 'is-invalid':'' ?>"
-								 type="number" name="harga" min="0" placeholder="Masukan Harga Produk" />
+								<label for="harga">Harga Dasar</label>
+								<input class="form-control <?php echo form_error('harga_dasar') ? 'is-invalid':'' ?>"
+								 type="number" name="harga_dasar" min="0" placeholder="Masukan Harga Dasar Produk" />
 								<div class="invalid-feedback">
-									<?php echo form_error('harga') ?>
+									<?php echo form_error('harga_dasar') ?>
 								</div>
 							</div>
+
+							
 
 							<div class="form-group">
 								<label for="name">Keterangan</label>
@@ -59,20 +61,38 @@
 							</div>
 
 							<div class="form-group">
-								<label for="name">Gambar Produk</label>
-								<input class="form-control-file <?php echo form_error('gambar') ? 'is-invalid':'' ?>"
-								 type="file" name="gambar" />
+								<label for="name">Foto Produk</label>
+								<input class="form-control-file <?php echo form_error('foto_produk') ? 'is-invalid':'' ?>"
+								 type="file" name="foto_produk" />
 								<div class="invalid-feedback">
-									<?php echo form_error('gambar') ?>
+									<?php echo form_error('foto_produk') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="harga">Stok Produk</label>
-								<input class="form-control <?php echo form_error('stok') ? 'is-invalid':'' ?>"
-								 type="number" name="stok" min="0" placeholder="Masukan Stok Produk" />
+								<input class="form-control <?php echo form_error('stok_produk') ? 'is-invalid':'' ?>"
+								 type="number" name="stok_produk" min="0" placeholder="Masukan Stok Produk" />
 								<div class="invalid-feedback">
-									<?php echo form_error('stok') ?>
+									<?php echo form_error('stok_produk') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="harga">Harga Jual</label>
+								<input class="form-control <?php echo form_error('harga_jual') ? 'is-invalid':'' ?>"
+								 type="number" name="harga_jual" min="0" placeholder="Masukan Harga Jual Produk" />
+								<div class="invalid-feedback">
+									<?php echo form_error('harga_jual') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="harga">Berat/Satuan</label>
+								<input class="form-control <?php echo form_error('harga_jual') ? 'is-invalid':'' ?>"
+								 type="text" name="berat_satuan" min="0" placeholder="Masukan Berat/Satuan Produk" />
+								<div class="invalid-feedback">
+									<?php echo form_error('berat_satuan') ?>
 								</div>
 							</div>
 

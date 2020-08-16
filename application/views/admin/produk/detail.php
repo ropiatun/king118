@@ -13,51 +13,22 @@
 
 
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
-<section class="content-header">
-     
-<h1>
-        DETAIL MAHASISWA
-        <small>Preview</small>
-    </h1>
- 
-     
-<ol class="breadcrumb">
-         
-<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
- 
-         
-<li><a href="#">Forms</a></li>
- 
-         
-<li class="active">General Elements</li>
- 
-    </ol>
- 
-</section>
- 
- 
-<!-- Main content -->
- 
-<section class="content">
-     
-<div class="row">
-        <!-- right column -->
-         
-<div class="col-md-8">
-             
-<div class="box">
-                 
-<div class="box-header">
-                     
-<h3 class="box-title">Data Detail untuk Mahasiswa <?php echo $row['nama']; ?></h3>
- 
-                </div>
- 
-                <!-- /.box-header -->
-                 
-<div class="box-body no-padding">
-                     
-<table class="table">
+
+        <div id="content-wrapper">
+
+            <div class="container-fluid">
+
+                <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
+
+                <!-- DataTables -->
+                <div class="card mb-3">
+                    <div class="card-header">
+
+                        <a href="<?php echo site_url('admin/Produk') ?>"><i class="fas fa-arrow-left"></i>
+                            Kembali</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
  
                          
 <tr>
@@ -68,57 +39,89 @@
 <td>:</td>
  
                              
-<td><?php echo $row['nama']; ?></td>
+<td><?php echo $kingsamadenganraja['nama_produk']; ?></td>
  
                         </tr>
  
                          
 <tr>
                              
-<td>Alamat</td>
+<td>Harga Dasar</td>
  
                              
 <td>:</td>
  
                              
-<td><?php echo $row['harga']; ?></td>
+<td><?php echo $kingsamadenganraja['harga_dasar']; ?></td>
  
-                        </tr>
+ </tr>
+
+ <tr>
+                             
+<td>Harga jual</td>
+ 
+                             
+<td>:</td>
+ 
+                             
+<td><?php echo $kingsamadenganraja['harga_jual']; ?></td>
+ 
+ </tr>
  
                          
 <tr>
                              
-<td>No Telp</td>
+<td>Keterangan</td>
  
                              
 <td>:</td>
  
                              
-<td><?php echo $row['keterangan']; ?></td>
+<td><?php echo $kingsamadenganraja['keterangan']; ?></td>
  
-                        </tr>
+</tr>
+
+<tr>
+                             
+<td>Foto Produk</td>
  
-                    </table>
+                             
+<td>:</td>
  
-                     
-<div class="box-footer">
-                        <?php echo anchor('produk', 'cancel', array('class' => 'btn btn-default'));
-                        ?>
+                             
+<td><img src="<?php echo base_url('upload/produk/'.$kingsamadenganraja['foto_produk']) ?>" width="200" /></td>
+ 
+</tr>
+ 
+ </table>
                     </div>
- 
                 </div>
- 
-                <!-- /.box-body -->
+
             </div>
- 
-            <!-- /.box -->
- 
+            <!-- /.container-fluid -->
+
+            <!-- Sticky Footer -->
+            <?php $this->load->view("admin/_partials/footer.php") ?>
+
         </div>
- 
-        <!--/.col (right) -->
+        <!-- /.content-wrapper -->
+
     </div>
- 
-    <!-- /.row -->
-</section>
- 
-<!-- /.content -->
+    <!-- /#wrapper -->
+
+
+    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <?php $this->load->view("admin/_partials/modal.php") ?>
+
+    <?php $this->load->view("admin/_partials/js.php") ?>
+
+    <script>
+function deleteConfirm(url){
+    $('#btn-delete').attr('href', url);
+    $('#deleteModal').modal();
+}
+</script>
+
+</body>
+
+</html>

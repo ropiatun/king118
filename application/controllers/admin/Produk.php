@@ -51,27 +51,19 @@ class Produk extends CI_Controller
     }
 
     function detail($id){
-        $produk = array('id_produk'=>$id);
-        return $this->db->get_where('produk',$produk);
+         $data = [
+            'kingsamadenganraja' => $this->db->get_where('produk',['id_produk'=>$id])->row_array(),
+        ];
+        $this->load->view("admin/produk/detail", $data);
     }
 
-    public function delete($id=null)
+     public function delete($id=null)
     {
-        if (!isset($id)) redirect('admin/produk');
-       
-        $produk = $this->produk_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($produk->rules());
-
-        if ($validation->run()) {
-            $produk->update();
-            $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-        }
-
-        $data["produk"] = $produk->getById($id);
-        if (!$data["produk"]) show_404();
+        if (!isset($id)) show_404();
         
-        $this->load->view("admin/produk/delete", $data);
+        if ($this->produk_model->delete($id)) {
+            redirect(site_url('admin/produk'));
+        }
     }
 
     public function print_data()

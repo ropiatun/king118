@@ -18,9 +18,9 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<?php if ($this->session->flashdata('sukses')): ?>
 				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+					<?php echo $this->session->flashdata('sukses'); ?>
 				</div>
 				<?php endif; ?>
 
@@ -31,9 +31,21 @@
 					<div class="card-body">
 
 						<form action="<?php echo site_url('admin/produksi/tambah') ?>" method="post" enctype="multipart/form-data" >
+
+
+							<div class="form-group">
+								<label for="harga">Nama Produk</label>
+								<select name="id_produk" class="form-control form-control-sm">
+								<?php foreach ($produk as $lproduk) {?>
+  									<option name="id_produk" value="<?=$lproduk['id_produk'];?>" ><?=$lproduk['nama_produk'];?></option>
+  								
+  							<?};?>
+								</select>
+							</div>
+
 							<div class="form-group">
 								<label for="nama">Tanggal Produksi</label>
-								<input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
+								<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>"
 								 type="date" name="tanggal" placeholder="Masukan Tanggal Produksi" />
 								<div class="invalid-feedback">
 									<?php echo form_error('tanggal') ?>
@@ -42,19 +54,19 @@
 
 							<div class="form-group">
 								<label for="harga">Biaya Produksi</label>
-								<input class="form-control <?php echo form_error('jumlah') ? 'is-invalid':'' ?>"
-								 type="number" name="jumlah" min="0" placeholder="Masukan Jumlah Biaya Produksi" />
+								<input class="form-control <?php echo form_error('biaya_produksi') ? 'is-invalid':'' ?>"
+								 type="number" name="biaya_produksi" min="0" placeholder="Masukan Jumlah Biaya Produksi" />
 								<div class="invalid-feedback">
-									<?php echo form_error('jumlah') ?>
+									<?php echo form_error('biaya_produksi') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="harga">Jumlah Produk Jadi</label>
-								<input class="form-control <?php echo form_error('produk_jadi') ? 'is-invalid':'' ?>"
-								 type="number" name="produk_jadi" min="0" placeholder="Masukan Jumlah Produk Jadi" />
+								<input class="form-control <?php echo form_error('jumlah_jadi') ? 'is-invalid':'' ?>"
+								 type="number" name="jumlah_jadi" min="0" placeholder="Masukan Jumlah Produk Jadi" />
 								<div class="invalid-feedback">
-									<?php echo form_error('produk_jadi') ?>
+									<?php echo form_error('jumlah_jadi') ?>
 								</div>
 							</div>
 

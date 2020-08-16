@@ -13,7 +13,8 @@ class Produksi extends CI_Controller
 
     public function index()
     {
-        $data["produksi"] = $this->produksi_model->getAll();
+        $data["produksi"] = $this->produksi_model->getJoin();
+       
         $this->load->view("admin/produksi/list", $data);
     }
 
@@ -22,13 +23,14 @@ class Produksi extends CI_Controller
         $produksi = $this->produksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($produksi->rules());
+        $data['produk'] = $this->db->get('produk')->result_array();
 
         if ($validation->run()) {
             $produksi->save();
             $this->session->set_flashdata('sukses', 'Berhasil disimpan');
         }
 
-        $this->load->view("admin/produksi/tambah");
+        $this->load->view("admin/produksi/tambah",$data);
     }
 
     public function edit($id = null)
@@ -38,6 +40,8 @@ class Produksi extends CI_Controller
         $produksi = $this->produksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($produksi->rules());
+        $data['produk'] = $this->db->get('produk')->result_array();
+
 
         if ($validation->run()) {
             $produksi->update();

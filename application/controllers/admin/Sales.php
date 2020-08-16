@@ -19,14 +19,18 @@ class Sales extends CI_Controller
 
     public function tambah()
     {
-        $sales      = $this->produk_model;
+        $sales      = $this->sales_model;
         $validation = $this->form_validation;
         $validation->set_rules($sales->rules());
 
         if ($validation->run()) {
             $sales->save();
+        // var_dump($sales->save());
+        // die;
             $this->session->set_flashdata('sukses', 'Berhasil disimpan');
+            redirect('admin/sales');
         }
+
 
         $this->load->view("admin/sales/tambah");
     }
@@ -50,22 +54,21 @@ class Sales extends CI_Controller
         $this->load->view("admin/sales/edit", $data);
     }
 
+    function detail($id){
+         $data = [
+            'kingsamadenganraja' => $this->db->get_where('sales',['id_user'=>$id])->row_array(),
+        ];
+        $this->load->view("admin/sales/detail", $data);
+    }
+
      public function delete($id=null)
     {
-        if (!isset($id)) redirect('admin/sales');
-       
-        $sales = $this->sales_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($sales->rules());
-
-        if ($validation->run()) {
-            $sales->update();
-            $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-        }
-
-        $data["sales"] = $sales->getById($id);
-        if (!$data["sales"]) show_404();
+        if (!isset($id)) show_404();
         
-        $this->load->view("admin/sales/delete", $data);
+        if ($this->sales_model->delete($id)) {
+            redirect(site_url('admin/sales'));
+        }
     }
+
+    
 }
