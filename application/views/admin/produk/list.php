@@ -77,6 +77,7 @@
 											<?php echo substr($produk->keterangan, 0, 120) ?>...</td>
 										<td>
 											<?php echo $produk->stok_produk ?>
+											Pcs
 										</td>
 										
 										<td>

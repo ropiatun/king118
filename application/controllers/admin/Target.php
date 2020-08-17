@@ -3,6 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Target extends CI_Controller
+
 {
     public function __construct()
     {
@@ -26,9 +27,20 @@ class Target extends CI_Controller
         $data['user'] = $this->db->get_where('user',['role_user'=>2])->result_array();
         $data['produk'] = $this->db->get('produk')->result_array();
 
+
+            $id = $this->input->post('id_produk');
+            $pcs =$this->input->post('target_pcs');
+            $select = $this->db->get_where('produk',['id_produk'=>$id])->row();
+            $stoklama = $select->stok_produk - $pcs ;
+            
+
         if ($validation->run()) {
             $target->save();
             $this->session->set_flashdata('sukses', 'Berhasil disimpan');
+
+            $this->db->set('stok_produk',$stoklama);
+            $this->db->where('id_produk',$id);
+            $this->db->update('produk');
         }
 
         $this->load->view("admin/target/tambah",$data);

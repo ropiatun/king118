@@ -41,8 +41,11 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($pemasukan as $pemasukan): ?>
+									<?php
+										$no=1;
+										foreach ($pemasukan as $pemasukan): ?>
 									<tr>
+										<td><?php echo $no++ ?></td>
 										<td width="150">
 											<?php echo $pemasukan->nama ?>
 										</td>

@@ -94,7 +94,7 @@ class Pemasukan_model2 extends CI_Model
     
     public function hitungdolfilter($id_user,$where)
     {
-         $this->db->select('sum(jumlah_debit) as king');
+         $this->db->select('sum(jumlah_debit) as king, sum(jumlah_pcs) as queen');
          $this->db->from('pemasukan');
          $this->db->join('user','pemasukan.id_user=user.id_user');
          $this->db->join('produk','pemasukan.id_produk=produk.id_produk');

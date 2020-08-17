@@ -34,6 +34,12 @@ class Sales extends CI_Controller
 
         $this->load->view("admin/sales/tambah");
     }
+    public function aktifupdate()
+        {
+            $where  = $this->input->post('id');
+            $kategori = $this->db->get_where('tb_e_kategori', ['id_kategori' => $where])->row_array();
+            echo json_encode($kategori);
+        }
 
     public function edit($id = null)
     {

@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/target/tambah') ?>"><i class="fas fa-plus"></i> Tambah Suplai</a>
+						<a href="<?php echo site_url('admin/target/tambah') ?>"><i class="fas fa-plus"></i> Tambah Target</a>
 					</div>
 					<div class="card-body">
 
@@ -30,11 +30,11 @@
 								<thead>
 									<tr>
 										<th>Nomor</th>
-										<th>Nama Sales</th>
-										<th>Nama Produk</th>
 										<th>Tanggal</th>
 										<th>Target Pcs</th>
 										<th>Target Toko</th>
+										<th>Nama Sales</th>
+										<th>Nama Produk</th>
 										<th>Selisih Target</th>
 										<th>Sisa Target</th>
 										<th>Aksi</th>
@@ -45,28 +45,29 @@
 									<tr>
 										<td scope="row"><?=$i++?></td>
 										<td width="150">
-											<?php echo $target->nama?>
-										</td>
-										<td width="150">
-											<?php echo $target->nama_produk ?>
-										</td>
-										<td width="150">
 											<?php echo $target->tanggal ?>
 										</td>
 										<td width="150">
 											<?php echo $target->target_pcs ?>
+											Pcs
 										</td>
-										<td>
+										<td width="150">
 											<?php echo $target->target_toko ?>
 										</td>
-										<td>
-											<?php echo $target->selisih_target ?>
-												
+										<td width="150">
+											<?php echo $target->nama ?>
 										</td>
+										<td>
+											<?php echo $target->nama_produk ?>
+										</td>
+										<td>
+											<?php echo $target->selisih_target ?></td>
+									
 										<td>
 											<?php echo $target->sisa_target ?>
 												
-										</td>
+											</td>
+									
 										<td>
 											<a href="<?php echo site_url('admin/target/edit/'.$target->id_target) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;
 										

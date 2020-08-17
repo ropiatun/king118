@@ -13,7 +13,7 @@ class Pemasukan2 extends CI_Controller
 
     public function index()
     {
-        $data["pemasukan"] = $this->pemasukan_model2->getJoin();  
+        $data["pemasukan"] = $this->db->get_where('user',['role_user    '=>2])->result(); 
        
         $this->load->view("admin/pemasukan2/list", $data);
     }

@@ -25,9 +25,19 @@ class Produksi extends CI_Controller
         $validation->set_rules($produksi->rules());
         $data['produk'] = $this->db->get('produk')->result_array();
 
+        
+
         if ($validation->run()) {
             $produksi->save();
             $this->session->set_flashdata('sukses', 'Berhasil disimpan');
+$id = $this->input->post('id_produk');
+            $jadi =$this->input->post('jumlah_jadi');
+            $select = $this->db->get_where('produk',['id_produk'=>$id])->row();
+            $stokbaru = $select->stok_produk + $jadi;
+            
+            $this->db->set('stok_produk',$stokbaru);
+            $this->db->where('id_produk',$id);
+            $this->db->update('produk');
         }
 
         $this->load->view("admin/produksi/tambah",$data);

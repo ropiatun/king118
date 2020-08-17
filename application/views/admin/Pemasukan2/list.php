@@ -31,33 +31,21 @@
 								<thead>
 									<tr>
 										<th>Nama Sales</th>
-										<!-- <th>tanggal</th>
-										<th>Jumlah Debit</th>
-										<th>Jumlah Pcs</th> -->
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($pemasukan as $pemasukan): ?>
+									<?php 
+// var_dump($pemasukan);
+// die;
+									foreach ($pemasukan as $pemasukan): ?>
 									<tr>
 										<td width="150">
 											<?php echo $pemasukan->nama ?>
 										</td>
-										<!-- <td width="150">
-											<?php echo $pemasukan->tanggal ?>
-										</td>
-										<td>
-											Rp.
-											<?php echo $pemasukan->jumlah_debit ?>
-										</td>
-										<td width="150">
-											<?php echo $pemasukan->jumlah_pcs ?>
-										</td>
-										 -->
+					
 										<td>
 											<a href="<?php echo site_url('admin/pemasukan2/detail/'.$pemasukan->id_user) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
-										
-											<!-- <a onclick="deleteConfirm('<?php echo site_url('admin/pemasukan/delete/'.$pemasukan->id_pemasukan) ?>')"><i class="fa fa-trash" style="color: red;"></i></a> -->
 										</td>
 									</tr>
 									<?php endforeach; ?>

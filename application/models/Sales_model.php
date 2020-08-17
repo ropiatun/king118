@@ -67,10 +67,10 @@ class Sales_model extends CI_Model
         $this->nama             = $post['nama'];
         $this->email            = $post['email'];
         $this->no_telepon       = $post['no_telepon'];
-        $this->foto_ktp     =$this->_uploadImageKtp();
-        $this->foto_selfie  =$this->_uploadImageSelfie();
-        $this->foto_profil  =$this->_uploadImageProfil();
-        $this->alamat       = $post['alamat'];
+        $this->foto_ktp         =$this->_uploadImageKtp();
+        $this->foto_selfie      =$this->_uploadImageSelfie();
+        $this->foto_profil      =$this->_uploadImageProfil();
+        $this->alamat           = $post['alamat'];
 
         // var_dump($this->foto_ktp); die;?
 

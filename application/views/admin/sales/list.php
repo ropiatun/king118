@@ -70,6 +70,9 @@
 											<a href="<?php echo site_url('admin/sales/detail/'.$sales->id_user) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
 										
 											<a onclick="deleteConfirm('<?php echo site_url('admin/sales/delete/'.$sales->id_user) ?>')"><i class="fa fa-trash" style="color: red;"></i></a>
+											<a href="<?php echo site_url('admin/sales/detail/'.$sales->id_user) ?>" data-toggle="modal" data-kode="<?= $sales->id_user ?>" data-target="#editkategori"><i class="fas fa-search-plus editkategori" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
+
+										
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -91,7 +94,33 @@
 
 	</div>
 	<!-- /#wrapper -->
+	<!-- Modal -->
 
+<div class="modal fade" id="editkategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="<?= base_url('admin/produk_admin/editkategori'); ?>">
+                    <input type="hidden" name="id_kategori_edit" id="id_kategori_edit" class="form-control">
+                    <div class="form-group">
+                        <label for="kategori_saat_ini">Kategori</label>
+                        <input type="text" name="nama_kategori_edit" id="nama_kategori_edit" class="form-control">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+                <button type="submit" class="btn btn-primary" id="save_pesawat">Simpan</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 	<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 	<?php $this->load->view("admin/_partials/modal.php") ?>
@@ -103,6 +132,24 @@ function deleteConfirm(url){
 	$('#btn-delete').attr('href', url);
 	$('#deleteModal').modal();
 }
+</script>
+<script type="text/javascript">
+    $(document).on('click', '.editkategori', function() {
+        $.ajax({
+            url: base_url + 'admin/Sales/aktifupdate',
+            method: 'POST',
+            data: {
+                id: $(this).data('kode'),
+            },
+            success: function(response) {
+                data = JSON.parse(response);
+                console.log(data);
+                $('#id_kategori_edit').val(data.id_kategori);
+                $('#nama_kategori_edit').val(data.nama_kategori);
+            }
+        });
+    });
+    
 </script>
 
 </body>

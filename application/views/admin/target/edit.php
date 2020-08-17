@@ -28,7 +28,7 @@
 				<div class="card mb-3">
 					<div class="card-header">
 
-						<a href="<?php echo site_url('admin/Target') ?>"><i class="fas fa-arrow-left"></i>
+						<a href="<?php echo site_url('admin/target') ?>"><i class="fas fa-arrow-left"></i>
 							Kembali</a>
 					</div>
 					<div class="card-body">
@@ -51,7 +51,7 @@
 							<div class="form-group">
 								<label for="target_pcs">Target Pcs</label>
 								<input class="form-control <?php echo form_error('target_pcs') ? 'is-invalid':'' ?>"
-								 type="number" name="target_pcs" min="0" placeholder="Masukan Jumlah Target Pcs" value="<?php echo $target->target_pcs ?>" />
+								 type="text" name="target_pcs" placeholder="Masukkan Target Pcs" value="<?php echo $target->target_pcs ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('target_pcs') ?>
 								</div>
@@ -60,7 +60,7 @@
 							<div class="form-group">
 								<label for="target_toko">Target Toko</label>
 								<input class="form-control <?php echo form_error('target_toko') ? 'is-invalid':'' ?>"
-								 type="number" name="target_toko" min="0" placeholder="Masukan Jumlah Target Toko" value="<?php echo $target->target_toko ?>" />
+								 type="text" name="target_toko" placeholder="Masukkan Target Toko" value="<?php echo $target->target_toko ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('target_toko') ?>
 								</div>
@@ -86,10 +86,11 @@
 								</select>
 							</div>
 
-							<div class="form-group">
+
+								<div class="form-group">
 								<label for="selisih_target">Selisih Target</label>
 								<input class="form-control <?php echo form_error('selisih_target') ? 'is-invalid':'' ?>"
-								 type="number" name="selisih_target" min="0" placeholder="Masukan Jumlah Selisih Target" value="<?php echo $target->selisih_target ?>" />
+								 type="text" name="selisih_target" placeholder="Masukkan Selisih Target" value="<?php echo $target->selisih_target ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('selisih_target') ?>
 								</div>
@@ -98,7 +99,7 @@
 							<div class="form-group">
 								<label for="sisa_target">Sisa Target</label>
 								<input class="form-control <?php echo form_error('sisa_target') ? 'is-invalid':'' ?>"
-								 type="number" name="sisa_target" min="0" placeholder="Masukan Jumlah Sisa Target" value="<?php echo $target->sisa_target ?>" />
+								 type="number" name="sisa_target" min="0" placeholder="Masukan Sisa Target" value="<?php echo $target->sisa_target ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('sisa_target') ?>
 								</div>

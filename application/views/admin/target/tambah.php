@@ -32,6 +32,33 @@
 
 						<form action="<?php echo site_url('admin/target/tambah') ?>" method="post" enctype="multipart/form-data" >
 
+							<div class="form-group">
+								<label for="nama">Tanggal</label>
+								<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>"
+								 type="date" name="tanggal" placeholder="Masukan Tanggal" />
+								<div class="invalid-feedback">
+									<?php echo form_error('tanggal') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="nama">Target Pcs</label>
+								<input class="form-control <?php echo form_error('target_pcs') ? 'is-invalid':'' ?>"
+								 type="text" name="target_pcs" placeholder="Masukan Target Pcs" />
+								<div class="invalid-feedback">
+									<?php echo form_error('target_pcs') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="nama">Target Toko</label>
+								<input class="form-control <?php echo form_error('target_toko') ? 'is-invalid':'' ?>"
+								 type="text" name="target_toko" placeholder="Masukan Target Toko" />
+								<div class="invalid-feedback">
+									<?php echo form_error('target_toko') ?>
+								</div>
+							</div>
+
 
 							<div class="form-group">
 								<label for="id_user">Nama user</label>
@@ -53,30 +80,22 @@
 								</select>
 							</div>
 
+
 							<div class="form-group">
-								<label for="tanggal">Tanggal</label>
-								<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>"
-								 type="date" name="tanggal" placeholder="Masukan Tanggal " />
+								<label for="nama">Selisih Target</label>
+								<input class="form-control <?php echo form_error('selisih_target') ? 'is-invalid':'' ?>"
+								 type="text" name="selisih_target" placeholder="Masukan Selisih Target" />
 								<div class="invalid-feedback">
-									<?php echo form_error('tanggal') ?>
+									<?php echo form_error('selisih_target') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="target_pcs">Target Pcs</label>
-								<input class="form-control <?php echo form_error('target_pcs') ? 'is-invalid':'' ?>"
-								 type="number" name="target_pcs" min="0" placeholder="Masukan Target Pcs" />
+								<label for="sisa_target">Sisa Target</label>
+								<input class="form-control <?php echo form_error('sisa_target') ? 'is-invalid':'' ?>"
+								 type="number" name="sisa_target" min="0" placeholder="Masukan Sisa Target" />
 								<div class="invalid-feedback">
-									<?php echo form_error('target_pcs') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="target_toko">Target Toko</label>
-								<input class="form-control <?php echo form_error('target_toko') ? 'is-invalid':'' ?>"
-								 type="number" name="target_toko" min="0" placeholder="Masukan Target Toko" />
-								<div class="invalid-feedback">
-									<?php echo form_error('target_toko') ?>
+									<?php echo form_error('sisa_target') ?>
 								</div>
 							</div>
 

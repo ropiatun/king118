@@ -57,6 +57,7 @@
 										</td>
 										<td>
 											<?php echo $suplai->jumlah_suplai ?>
+											Pcs
 										</td>
 										<td>
 											<?php echo $suplai->status_suplai ?></td>
