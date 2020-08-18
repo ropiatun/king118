@@ -100,8 +100,8 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Penjualan Terbanyak</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                         <!--  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $reward->nama ?><br><?= $reward->debit ?> <?= $reward->pcs ?>
-                          </div> -->
+                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $reward->nama ?><br>Rp. <?= $reward->jmlh ?><br><?= $reward->pcs ?> pcs
+                          </div>
                         </div>
                       </div>
                     </div>

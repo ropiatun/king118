@@ -184,8 +184,6 @@ class Sales_model extends CI_Model
         $fileData = $this->upload->data();
         return $data['foto_profil'] = $fileData['file_name'];
     }
-    
-    
 }   
 private function _deleteImage($id)
 {
@@ -203,7 +201,6 @@ public function hitung_sales()
  $this->db->where('role_user', 2);
  $query = $this->db->get();
  return $query->num_rows();
-
 }
 
  public function reward($id,$tanggal)

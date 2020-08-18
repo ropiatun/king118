@@ -94,5 +94,10 @@ class Suplai_model extends CI_Model
         return $this->db->delete($this->_table, array("id_suplai" => $id));
     }
 
+    public function reward()
+    {
+        return $this->db->select('sum(jumlah_debit) as jmlh, sum(jumlah_pcs) as pcs,pemasukan.id_user,tanggal,user.nama')->from('pemasukan')->join('user','user.id_user=pemasukan.id_user')->group_by('id_user')->group_by('tanggal')->order_by('tanggal','desc')->order_by('pcs','desc')->get()->row();
+    }
+
 }
 

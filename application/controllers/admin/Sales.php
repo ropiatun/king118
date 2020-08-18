@@ -66,24 +66,24 @@ class Sales extends CI_Controller
     }
 
 
-    public function edit($id = null)
-    {
-        if (!isset($id)) redirect('admin/sales');
+    // public function edit($id = null)
+    // {
+    //     if (!isset($id)) redirect('admin/sales');
 
-        $sales = $this->sales_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($sales->rules());
+    //     $sales = $this->sales_model;
+    //     $validation = $this->form_validation;
+    //     $validation->set_rules($sales->rules());
 
-        if ($validation->run()) {
-            $sales->update();
-            $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-        }
+    //     if ($validation->run()) {
+    //         $sales->update();
+    //         $this->session->set_flashdata('sukses', 'Berhasil disimpan');
+    //     }
 
-        $data["sales"] = $produk->getById($id);
-        if (!$data["sales"]) show_404();
+    //     $data["sales"] = $produk->getById($id);
+    //     if (!$data["sales"]) show_404();
 
-        $this->load->view("admin/sales/edit", $data);
-    }
+    //     $this->load->view("admin/sales/edit", $data);
+    // }
 
     function detail($id)
     {

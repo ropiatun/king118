@@ -19,7 +19,7 @@ function __construct(){
 		'hitung_sales' => $this->sales_model->hitung_sales(),
 		'hitung_toko' => $this->toko_model->hitung_toko(),
 		'hitung_produk' => $this->produk_model->hitung_produk(),
-		// 'reward' => $this->suplai_model->reward(),
+		'reward' => $this->suplai_model->reward(),
 	    );
 	    // var_dump($data['reward']); die;
 
