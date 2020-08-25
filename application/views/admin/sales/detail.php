@@ -64,7 +64,7 @@
 <td>:</td>
  
                              
-<td><?php echo $kingsamadenganraja['no_hp']; ?></td>
+<td><?php echo $kingsamadenganraja['no_telepon']; ?></td>
  
  </tr>
  
@@ -88,7 +88,7 @@
 <td>:</td>
  
                              
-<td><img src="<?php echo base_url('upload/sales/'.$kingsamadenganraja['foto_selfie']) ?>" width="200" /></td>
+<td><img src="<?php echo base_url('upload/sales/'.$kingsamadenganraja['selfie_ktp']) ?>" width="200" /></td>
  
 </tr>
 

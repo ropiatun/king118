@@ -52,7 +52,7 @@
 											<?php echo $prediksi->hasil_prediksi ?>
 										</td>
 										<td>
-											<a href="<?php echo site_url('admin/prediksi/edit/'.$prediksi->id_prediksi) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;
+											<!-- <a href="<?php echo site_url('admin/prediksi/edit/'.$prediksi->id_prediksi) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp; -->
 										
 											<a onclick="deleteConfirm('<?php echo site_url('admin/prediksi/delete/'.$prediksi->id_prediksi) ?>')"><i class="fa fa-trash" style="color: red;"></i></a>
 										</td>

@@ -13,7 +13,7 @@ class Penjualan extends CI_Controller
 
     public function index()
     {
-       $data["penjualan"] = $this->penjualan_model->getAll();
+       $data["penjualan"] = $this->penjualan_model->getJoin();
         $this->load->view("admin/penjualan/list", $data);
         
     }
@@ -23,6 +23,8 @@ class Penjualan extends CI_Controller
         $penjualan  = $this->penjualan_model;
         $validation = $this->form_validation;
         $validation->set_rules($penjualan->rules());
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
+
 
         if ($validation->run()) {
             $penjualan->save();
@@ -39,6 +41,7 @@ class Penjualan extends CI_Controller
         $penjualan  = $this->penjualan_model;
         $validation = $this->form_validation;
         $validation->set_rules($penjualan->rules());
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
 
         if ($validation->run()) {
             $penjualan->update();

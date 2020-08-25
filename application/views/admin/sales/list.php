@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/sales/tambah') ?>"><i class="fas fa-plus"></i> Tambah Produksi</a>
+						<!-- <a href="<?php echo site_url('admin/sales/tambah') ?>"><i class="fas fa-plus"></i> Tambah Produksi</a> -->
 					</div>
 					<div class="card-header">
 						<h4> Data Sales</h4>
@@ -107,7 +107,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">Bukti Pemabayaran</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">Status Sales</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>

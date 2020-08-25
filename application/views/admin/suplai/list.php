@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/suplai/tambah') ?>"><i class="fas fa-plus"></i> Tambah Suplai</a>
+						<!-- <a href="<?php echo site_url('admin/suplai/tambah') ?>"><i class="fas fa-plus"></i> Tambah Suplai</a> -->
 					</div>
 					<div class="card-body">
 
@@ -63,7 +63,7 @@
 											<?php echo $suplai->status_suplai ?></td>
 									
 										<td>
-											<a href="<?php echo site_url('admin/suplai/edit/'.$suplai->id_suplai) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp;
+											<!-- <a href="<?php echo site_url('admin/suplai/edit/'.$suplai->id_suplai) ?>"><i class="fa fa-edit" style="color: blue;"></i></a>&nbsp;&nbsp;&nbsp; -->
 										
 											<a onclick="deleteConfirm('<?php echo site_url('admin/suplai/delete/'.$suplai->id_suplai) ?>')"><i class="fa fa-trash" style="color: red;"></i></a>
 										</td>

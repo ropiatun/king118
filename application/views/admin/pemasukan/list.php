@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/pemasukan/tambah') ?>"><i class="fas fa-plus"></i> Tambah Pemasukan</a>&nbsp;&nbsp;&nbsp;
+						<!-- <a href="<?php echo site_url('admin/pemasukan/tambah') ?>"><i class="fas fa-plus"></i> Tambah Pemasukan</a>&nbsp;&nbsp;&nbsp; -->
 						<a class="btn btn-danger" href="<?php echo site_url('admin/pemasukan/print')?>"> <i class="fa fa-print"></i>Print</a>
 					</div>
 					<div class="card-body">

@@ -13,15 +13,16 @@ class Prediksi extends CI_Controller
 
     public function index()
     {
-        $data["prediksi"] = $this->prediksi_model->getAll();
+       $data["prediksi"] = $this->prediksi_model->getJoin();
         $this->load->view("admin/prediksi/list", $data);
     }
 
     public function tambah()
     {
-        $prediksi   = $this->prediksi_model;
+        $prediksi = $this->prediksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($prediksi->rules());
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
 
         if ($validation->run()) {
             $prediksi->save();
@@ -39,6 +40,7 @@ class Prediksi extends CI_Controller
         $prediksi = $this->prediksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($prediksi->rules());
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
 
         if ($validation->run()) {
             $prediksi->update();

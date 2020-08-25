@@ -49,6 +49,16 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+								<label for="id_user">Nama user</label>
+								<select name="id_user" class="form-control form-control-sm">
+								<?php foreach ($user as $luser) {?>
+  									<option name="id_user" value="<?=$luser['id_user'];?>" ><?=$luser['nama'];?></option>
+  								
+  							<?};?>
+								</select>
+							</div>
+
 
 							<input class="btn btn-success" type="submit" name="btn" value="save" />
 						</form>

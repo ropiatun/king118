@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sales extends CI_Controller
 {
@@ -16,6 +16,7 @@ class Sales extends CI_Controller
         $data["sales"] = $this->sales_model->getAll();
         $this->load->view("admin/sales/list", $data);
     }
+
     public function upadatestatus()
     {
         $where  = $this->input->post('id');
@@ -47,58 +48,55 @@ class Sales extends CI_Controller
         redirect('admin/Sales');
     }
 
+
     public function tambah()
     {
-        $sales      = $this->sales_model;
+        $sales       = $this->sales_model;
         $validation = $this->form_validation;
         $validation->set_rules($sales->rules());
 
         if ($validation->run()) {
             $sales->save();
-            // var_dump($sales->save());
-            // die;
             $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-            redirect('admin/sales');
         }
-
 
         $this->load->view("admin/sales/tambah");
     }
 
-
-    // public function edit($id = null)
-    // {
-    //     if (!isset($id)) redirect('admin/sales');
-
-    //     $sales = $this->sales_model;
-    //     $validation = $this->form_validation;
-    //     $validation->set_rules($sales->rules());
-
-    //     if ($validation->run()) {
-    //         $sales->update();
-    //         $this->session->set_flashdata('sukses', 'Berhasil disimpan');
-    //     }
-
-    //     $data["sales"] = $produk->getById($id);
-    //     if (!$data["sales"]) show_404();
-
-    //     $this->load->view("admin/sales/edit", $data);
-    // }
-
-    function detail($id)
+    public function edit($id = null)
     {
-        $data = [
-            'kingsamadenganraja' => $this->db->get_where('sales', ['id_user' => $id])->row_array(),
+        if (!isset($id)) redirect('admin/sales');
+       
+        $sales       = $this->sales_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($sales->rules());
+
+        if ($validation->run()) {
+            $sales->update();
+            $this->session->set_flashdata('sukses', 'Berhasil disimpan');
+        }
+
+        $data["user"] = $sales->getById($id);
+        if (!$data["user"]) show_404();
+        
+        $this->load->view("admin/sales/edit", $data);
+    }
+
+    function detail($id){
+         $data = [
+            'kingsamadenganraja' => $this->db->get_where('user',['id_user'=>$id])->row_array(),
         ];
         $this->load->view("admin/sales/detail", $data);
     }
 
-    public function delete($id = null)
+     public function delete($id=null)
     {
         if (!isset($id)) show_404();
-
+        
         if ($this->sales_model->delete($id)) {
             redirect(site_url('admin/sales'));
         }
     }
+
+    
 }

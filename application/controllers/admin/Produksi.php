@@ -24,6 +24,7 @@ class Produksi extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($produksi->rules());
         $data['produk'] = $this->db->get('produk')->result_array();
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
 
         
 
@@ -51,6 +52,7 @@ $id = $this->input->post('id_produk');
         $validation = $this->form_validation;
         $validation->set_rules($produksi->rules());
         $data['produk'] = $this->db->get('produk')->result_array();
+        $data['user'] = $this->db->get_where('user',['role_user'=>1])->result_array();
 
 
         if ($validation->run()) {

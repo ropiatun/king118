@@ -22,11 +22,17 @@
 
 <body class="bg-gradient-primary">
 
+
   <div class="container">
     <?php echo form_open('administrator/login', array('class'=>'form-signin')) ?>
     <div class="row justify-content-center">
       <div class="col-xl-5 col-lg-12 col-md-9">
         <div class="card o-hidden border-0 shadow-lg my-5">
+          <?php if ($this->session->flashdata('pesan')): ?>
+        <div class="alert alert-danger" role="alert">
+          <?php echo $this->session->flashdata('pesan'); ?>
+        </div>
+        <?php endif; ?>
           <div class="card-body p-0">
             <div class="row">
               <div class="col-lg-12">

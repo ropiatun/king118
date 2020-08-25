@@ -9,6 +9,7 @@ class Produksi_model extends CI_Model
     public $tanggal;
     public $biaya_produksi;
     public $jumlah_jadi;
+    public $id_user;
 
     public function rules()
     {
@@ -27,7 +28,11 @@ class Produksi_model extends CI_Model
             
             ['field' => 'jumlah_jadi',
             'label' => 'Junlah_jadi',
-            'rules' => 'numeric']
+            'rules' => 'numeric'],
+
+            ['field' => 'id_user',
+            'label' => 'Id_user',
+            'rules' => 'required']
         ];
     }
 
@@ -40,6 +45,7 @@ class Produksi_model extends CI_Model
         $this->db->select('*');
          $this->db->from('produksi');
          $this->db->join('produk','produksi.id_produk=produk.id_produk');
+         $this->db->join('user','produksi.id_user=user.id_user');
          $query = $this->db->get();
          return $query->result();
     }
@@ -56,6 +62,7 @@ class Produksi_model extends CI_Model
         $this->tanggal          = $post["tanggal"];
         $this->biaya_produksi   = $post["biaya_produksi"];
         $this->jumlah_jadi      = $post["jumlah_jadi"];
+        $this->id_user          = $post["id_user"];
 
         return $this->db->insert($this->_table, $this);
     }
@@ -68,6 +75,7 @@ class Produksi_model extends CI_Model
         $this->tanggal          = $post["tanggal"];
         $this->biaya_produksi   = $post["biaya_produksi"];
         $this->jumlah_jadi      = $post["jumlah_jadi"];
+        $this->id_user          = $post["id_user"];
         
         return $this->db->update($this->_table, $this, array('id_produksi' => $post['id']));
     }

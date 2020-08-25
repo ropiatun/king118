@@ -24,7 +24,7 @@ class Administrator extends CI_Controller {
 			$check = $this->Login_model->checkLogin($username, $password);
 
 			if (!$check) {
-				$this->session->set_flashdata('pesan', 'Maaf Username dan Password Anda Salah');
+				$this->session->set_flashdata('pesan', 'Maaf Username dan Password Anda Tidak Sesuai');
 				redirect('Administrator');
 			}else{
 				$data = array(

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Laporan King18</title>
 </head>
 <body>
 	<style>

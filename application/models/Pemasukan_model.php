@@ -66,19 +66,19 @@ class Pemasukan_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_pemasukan" => $id])->row();
     }
 
-    public function save()
-    {
-        $post = $this->input->post();
-        $this->id_user          = $post["id_user"];
-        $this->tanggal          = $post["tanggal"];
-        $this->jumlah_debit     = $post["jumlah_debit"];
-        $this->jumlah_pcs       = $post["jumlah_pcs"];
-        $this->id_produk        = $post["id_produk"];
-        $this->return_produk    = $post["return_produk"];
-        $this->id_target        = $post["id_target"];
+    // public function save()
+    // {
+    //     $post = $this->input->post();
+    //     $this->id_user          = $post["id_user"];
+    //     $this->tanggal          = $post["tanggal"];
+    //     $this->jumlah_debit     = $post["jumlah_debit"];
+    //     $this->jumlah_pcs       = $post["jumlah_pcs"];
+    //     $this->id_produk        = $post["id_produk"];
+    //     $this->return_produk    = $post["return_produk"];
+    //     $this->id_target        = $post["id_target"];
 
-        return $this->db->insert($this->_table, $this);
-    }
+    //     return $this->db->insert($this->_table, $this);
+    // }
 
     public function update()
     {

@@ -8,6 +8,7 @@ class Prediksi_model extends CI_Model
     public $tanggal;
     public $penjualan;
     public $hasil_prediksi;
+    public $id_user;
 
     public function rules()
     {
@@ -23,13 +24,26 @@ class Prediksi_model extends CI_Model
             
             ['field' => 'hasil_prediksi',
             'label' => 'Hasil_prediksi',
-            'rules' => 'numeric']
+            'rules' => 'numeric'],
+
+            ['field' => 'id_user',
+            'label' => 'Id_user',
+            'rules' => 'required']
         ];
     }
 
     public function getAll()
     {
         return $this->db->get($this->_table)->result();
+    }
+
+     public function getJoin()
+    {
+        $this->db->select('*');
+         $this->db->from('prediksi');
+         $this->db->join('user','prediksi.id_user=user.id_user');
+         $query = $this->db->get();
+         return $query->result();
     }
     
     public function getById($id)
@@ -49,6 +63,7 @@ class Prediksi_model extends CI_Model
         $this->tanggal          = $post["tanggal"];
         $this->penjualan        = $post["penjualan"];
         $this->hasil_prediksi   = $prediksi;
+        $this->id_user          = $post["id_user"];
 
         return $this->db->insert($this->_table, $this);
     }

@@ -66,6 +66,17 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+								<label for="id_user">Nama Sales</label>
+								<select name="id_user" class="form-control <?php echo form_error('id_user') ? 'is-invalid':'' ?>">
+								<?php foreach ($user as $luser) {?>
+  									<option name="id_user" value="<?=$luser['id_user'];?>" ><?=$luser['nama'];?></option>
+  								
+  							<?};?>
+								</select>
+							</div>
+
+
 							
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>

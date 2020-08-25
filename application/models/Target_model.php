@@ -28,11 +28,11 @@ class Target_model extends CI_Model
             'label' => 'Target_toko',
             'rules' => 'required'],
 
-            ['field' => 'id_user',
+           ['field' => 'id_user',
             'label' => 'Id_user',
             'rules' => 'required'],
 
-            ['field' => 'id_produk',
+           ['field' => 'id_produk',
             'label' => 'Id_produk',
             'rules' => 'required'],
             
@@ -83,7 +83,7 @@ class Target_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id_target     =$post["id"];
+        $this->id_target        =$post["id"];
         $this->tanggal          = $post["tanggal"];
         $this->target_pcs       = $post["target_pcs"];
         $this->target_toko      = $post["target_toko"];
