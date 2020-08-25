@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pemasukan_model2 extends CI_Model
 {
@@ -17,33 +17,47 @@ class Pemasukan_model2 extends CI_Model
     {
         return [
 
-            ['field' => 'id_user',
-            'label' => 'Id_user',
-            'rules' => 'required'],
+            [
+                'field' => 'id_user',
+                'label' => 'Id_user',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'tanggal',
-            'label' => 'tanggal',
-            'rules' => 'required'],
-            
-            ['field' => 'jumlah_debit',
-            'label' => 'Jumlah_debit',
-            'rules' => 'numeric'],
+            [
+                'field' => 'tanggal',
+                'label' => 'tanggal',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'jumlah_pcs',
-            'label' => 'Jumlah_pcs',
-            'rules' => 'numeric'],
+            [
+                'field' => 'jumlah_debit',
+                'label' => 'Jumlah_debit',
+                'rules' => 'numeric'
+            ],
 
-            ['field' => 'id_produk',
-            'label' => 'Id_produk',
-            'rules' => 'required'],
-            
-            ['field' => 'return_produk',
-            'label' => 'Return_produk',
-            'rules' => 'numeric'],
+            [
+                'field' => 'jumlah_pcs',
+                'label' => 'Jumlah_pcs',
+                'rules' => 'numeric'
+            ],
 
-             ['field' => 'id_target',
-            'label' => 'Id_target',
-            'rules' => 'numeric'],
+            [
+                'field' => 'id_produk',
+                'label' => 'Id_produk',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'return_produk',
+                'label' => 'Return_produk',
+                'rules' => 'numeric'
+            ],
+
+            [
+                'field' => 'id_target',
+                'label' => 'Id_target',
+                'rules' => 'numeric'
+            ],
         ];
     }
 
@@ -55,83 +69,96 @@ class Pemasukan_model2 extends CI_Model
     public function getJoin()
     {
         $this->db->select('*');
-         $this->db->from('pemasukan');
-         $this->db->join('user','pemasukan.id_user=user.id_user');
-         $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-         $this->db->join('target','pemasukan.id_target=target.id_target');
-         $this->db->group_by('user.id_user');
-         $query = $this->db->get();
-         return $query->result();
+        $this->db->from('pemasukan');
+        $this->db->join('user', 'pemasukan.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        $this->db->group_by('user.id_user');
+        $query = $this->db->get();
+        return $query->result();
     }
 
-    
+
 
     public function detaillosdol($id_user)
     {
-         $this->db->select('*');
-         $this->db->from('pemasukan');
-         $this->db->join('user','pemasukan.id_user=user.id_user');
-         $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-         $this->db->join('target','pemasukan.id_target=target.id_target');
-         // $this->db->where('tanggal',$tanggal);
-         $this->db->where('user.id_user',$id_user);
-         $query = $this->db->get();
-         return $query->result_array();
+        $this->db->select('*');
+        $this->db->from('pemasukan');
+        $this->db->join('user', 'pemasukan.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        // $this->db->where('tanggal',$tanggal);
+        $this->db->where('user.id_user', $id_user);
+        $query = $this->db->get();
+        return $query->result_array();
     }
-    public function detaillosdolfilter($id_user,$where)
+    public function detaillosdolfilter($id_user, $where)
     {
-         $this->db->select('*');
-         $this->db->from('pemasukan');
-         $this->db->join('user','pemasukan.id_user=user.id_user');
-         $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-         $this->db->join('target','pemasukan.id_target=target.id_target');
-         // $this->db->where('tanggal',$tanggal);
-         $this->db->where('user.id_user',$id_user);
-         $this->db->where($where);
-         $query = $this->db->get();
-         return $query->result_array();
+        $this->db->select('*');
+        $this->db->from('pemasukan');
+        $this->db->join('user', 'pemasukan.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        // $this->db->where('tanggal',$tanggal);
+        $this->db->where('user.id_user', $id_user);
+        $this->db->where($where);
+        $query = $this->db->get();
+        return $query->result_array();
     }
-    
-    public function hitungdolfilter($id_user,$where)
+
+    public function hitungdolfilter($id_user, $where)
     {
-         $this->db->select('sum(jumlah_debit) as king, sum(jumlah_pcs) as queen');
-         $this->db->from('pemasukan');
-         $this->db->join('user','pemasukan.id_user=user.id_user');
-         $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-         $this->db->join('target','pemasukan.id_target=target.id_target');
-         // $this->db->where('tanggal',$tanggal);
-         $this->db->where($where);
-          $this->db->where('user.id_user',$id_user);
-         $query = $this->db->get();
-         return $query->result_array();
+        $this->db->select('sum(jumlah_debit) as king, sum(jumlah_pcs) as queen');
+        $this->db->from('pemasukan');
+        $this->db->join('user', 'pemasukan.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        // $this->db->where('tanggal',$tanggal);
+        $this->db->where($where);
+        $this->db->where('user.id_user', $id_user);
+        $query = $this->db->get();
+        return $query->result_array();
     }
     public function hitungdol($id_user)
     {
         $this->db->select('sum(jumlah_debit) as king, sum(jumlah_pcs) as queen');
         $this->db->from('pemasukan');
-        $this->db->join('user','pemasukan.id_user=user.id_user');
-        $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-        $this->db->join('target','pemasukan.id_target=target.id_target');
-         // $this->db->where('tanggal',$tanggal);
-          $this->db->where('user.id_user',$id_user);
-         $query = $this->db->get();
-         return $query->result_array();
-    }
-    
-    public function detaillosdolsatu($id_user)
-    {
-        $this->db->select('*');
-         $this->db->from('pemasukan');
-         $this->db->join('user','pemasukan.id_user=user.id_user');
-         $this->db->join('produk','pemasukan.id_produk=produk.id_produk');
-         $this->db->join('target','pemasukan.id_target=target.id_target');
-         // $this->db->where('tanggal',$tanggal);
-          $this->db->where('user.id_user',$id_user);
-         $query = $this->db->get();
-         return $query->row_array();
+        $this->db->join('user', 'pemasukan.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        // $this->db->where('tanggal',$tanggal);
+        $this->db->where('user.id_user', $id_user);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
-    
+    public function detaillosdolsatu($id_user)
+    {
+
+        $this->db->select('*');
+        $this->db->from('pemasukan');
+        $this->db->join('suplai', 'pemasukan.id_suplai=suplai.id_suplai');
+        $this->db->join('user', 'suplai.id_user=user.id_user');
+        $this->db->join('produk', 'pemasukan.id_produk=produk.id_produk');
+        $this->db->join('target', 'pemasukan.id_target=target.id_target');
+        // $this->db->where('tanggal',$tanggal);
+        $this->db->where('user.id_user', $id_user);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    public function target($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('target');
+        $this->db->order_by('tanggal', 'DESC');
+        $this->db->where('id_user', $id_user);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+
+
     public function getById($id)
     {
         return $this->db->get_where($this->_table, ["id_pemasukan" => $id])->row();
@@ -160,7 +187,7 @@ class Pemasukan_model2 extends CI_Model
         $this->jumlah_pcs       = $post["jumlah_pcs"];
         $this->id_produk        = $post["id_produk"];
         $this->return_produk    = $post["return_produk"];
-        
+
         return $this->db->update($this->_table, $this, array('id_pemasukan' => $post['id']));
     }
 
@@ -168,6 +195,4 @@ class Pemasukan_model2 extends CI_Model
     {
         return $this->db->delete($this->_table, array("id_pemasukan" => $id));
     }
-
 }
-

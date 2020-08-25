@@ -35,19 +35,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php 
-// var_dump($pemasukan);
-// die;
-									foreach ($pemasukan as $pemasukan): ?>
-									<tr>
-										<td width="150">
-											<?php echo $pemasukan->nama ?>
-										</td>
-					
-										<td>
-											<a href="<?php echo site_url('admin/pemasukan2/detail/'.$pemasukan->id_user) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
-										</td>
-									</tr>
+									<?php
+									// var_dump($pemasukan);
+									// die;
+									foreach ($pemasukan as $pemasukan) : ?>
+										<tr>
+											<td width="150">
+												<?php echo $pemasukan->username ?>
+											</td>
+
+											<td>
+												<a href="<?php echo site_url('admin/pemasukan2/detail/' . $pemasukan->id_user) ?>"><i class="fas fa-search-plus" style="color:green;"></i></a>&nbsp;&nbsp;&nbsp;
+											</td>
+										</tr>
 									<?php endforeach; ?>
 
 								</tbody>
@@ -75,11 +75,11 @@
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
 	<script>
-function deleteConfirm(url){
-	$('#btn-delete').attr('href', url);
-	$('#deleteModal').modal();
-}
-</script>
+		function deleteConfirm(url) {
+			$('#btn-delete').attr('href', url);
+			$('#deleteModal').modal();
+		}
+	</script>
 
 </body>
 

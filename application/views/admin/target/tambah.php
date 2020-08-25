@@ -18,10 +18,10 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('sukses')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('sukses'); ?>
-				</div>
+				<?php if ($this->session->flashdata('sukses')) : ?>
+					<div class="alert alert-success" role="alert">
+						<?php echo $this->session->flashdata('sukses'); ?>
+					</div>
 				<?php endif; ?>
 
 				<div class="card mb-3">
@@ -30,12 +30,11 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php echo site_url('admin/target/tambah') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php echo site_url('admin/target/tambah') ?>" method="post" enctype="multipart/form-data">
 
 							<div class="form-group">
 								<label for="nama">Tanggal</label>
-								<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>"
-								 type="date" name="tanggal" placeholder="Masukan Tanggal" />
+								<input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" type="date" name="tanggal" placeholder="Masukan Tanggal" />
 								<div class="invalid-feedback">
 									<?php echo form_error('tanggal') ?>
 								</div>
@@ -43,19 +42,9 @@
 
 							<div class="form-group">
 								<label for="nama">Target Pcs</label>
-								<input class="form-control <?php echo form_error('target_pcs') ? 'is-invalid':'' ?>"
-								 type="text" name="target_pcs" placeholder="Masukan Target Pcs" />
+								<input class="form-control <?php echo form_error('target_pcs') ? 'is-invalid' : '' ?>" type="text" name="target_pcs" placeholder="Masukan Target Pcs" />
 								<div class="invalid-feedback">
 									<?php echo form_error('target_pcs') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="nama">Target Toko</label>
-								<input class="form-control <?php echo form_error('target_toko') ? 'is-invalid':'' ?>"
-								 type="text" name="target_toko" placeholder="Masukan Target Toko" />
-								<div class="invalid-feedback">
-									<?php echo form_error('target_toko') ?>
 								</div>
 							</div>
 
@@ -63,43 +52,33 @@
 							<div class="form-group">
 								<label for="id_user">Nama Sales</label>
 								<select name="id_user" class="form-control form-control-sm">
-								<?php foreach ($user as $luser) {?>
-  									<option name="id_user" value="<?=$luser['id_user'];?>" ><?=$luser['nama'];?></option>
-  								
-  							<?};?>
+									<?php foreach ($user as $luser) { ?>
+										<option name="id_user" value="<?= $luser['id_user']; ?>"><?= $luser['username']; ?></option>
+									<?php }; ?>
 								</select>
 							</div>
 
 							<div class="form-group">
 								<label for="id_produk">Nama Produk</label>
 								<select name="id_produk" class="form-control form-control-sm">
-								<?php foreach ($produk as $lproduk) {?>
-  									<option name="id_produk" value="<?=$lproduk['id_produk'];?>" ><?=$lproduk['nama_produk'];?></option>
-  								
-  							<?};?>
+									<?php foreach ($produk as $lproduk) { ?>
+										<option name="id_produk" value="<?= $lproduk['id_produk']; ?>"><?= $lproduk['nama_produk']; ?></option>
+
+									<?php }; ?>
 								</select>
 							</div>
 
 
-							<div class="form-group">
-								<label for="nama">Selisih Target</label>
-								<input class="form-control <?php echo form_error('selisih_target') ? 'is-invalid':'' ?>"
-								 type="text" name="selisih_target" placeholder="Masukan Selisih Target" />
-								<div class="invalid-feedback">
-									<?php echo form_error('selisih_target') ?>
-								</div>
-							</div>
 
 							<div class="form-group">
 								<label for="sisa_target">Sisa Target</label>
-								<input class="form-control <?php echo form_error('sisa_target') ? 'is-invalid':'' ?>"
-								 type="number" name="sisa_target" min="0" placeholder="Masukan Sisa Target" />
+								<input class="form-control <?php echo form_error('sisa_target') ? 'is-invalid' : '' ?>" type="number" name="sisa_target" min="0" placeholder="Masukan Sisa Target" />
 								<div class="invalid-feedback">
-									<?php echo form_error('sisa_target') ?>
+									<?php echo form_error('sisa_target'); ?>
 								</div>
 							</div>
 
-														
+
 							<input class="btn btn-success" type="submit" name="btn" value="save" />
 						</form>
 
